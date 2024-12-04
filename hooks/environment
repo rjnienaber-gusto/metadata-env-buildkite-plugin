@@ -54,9 +54,6 @@ function read_meta_data() {
     value=$(echo "$value" | sed 's/"/\\"/g')
     echo "${mapped_key}=(${#value} chars)" >&2
     echo "${mapped_key}=\"${value}\""
-  else
-    echo "Could not read meta-data: ${meta_data_key}" >&2;
-    exit 1
   fi
 }
 
