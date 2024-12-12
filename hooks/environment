@@ -50,8 +50,8 @@ function read_meta_data() {
   value=$(echo "${value}" | tr '\n' " " | sed 's/ *$//')
   
   if [[ -n "$value" ]]; then
-    # Escape double quotes in the value
-    value=$(echo "$value" | sed 's/"/\\"/g')
+    # Escape double quotes and dollar signs in the value
+    value=$(echo "$value" | sed 's/"/\\"/g' | sed 's/\$/\\\$/g')
     echo "${mapped_key}=(${#value} chars)" >&2
     echo "${mapped_key}=\"${value}\""
   fi
